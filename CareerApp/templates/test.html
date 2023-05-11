@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Checkbox Loop Example</title>
+  <style>
+    /* Style the container div for the checkboxes */
+    #checkboxes {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 20px;
+      background-color: #f0f0f0;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 2px 2px 2px #ccc;
+    }
+
+    /* Style the label for each checkbox */
+    label {
+      display: flex;
+      align-items: center;
+      margin-left: 5px;
+      padding: 10px;
+      border: 2px solid #ccc;
+      border-radius: 10px;
+      color: #333;
+      font-size: 18px;
+      font-weight: bold;
+      text-shadow: 1px 1px #fff;
+      background-color: #f7f7f7;
+      box-shadow: 2px 2px 2px #ccc;
+      transition: all 0.3s ease-in-out;
+    }
+
+    /* Style the checkbox itself */
+    input[type=checkbox] {
+      margin-right: 10px;
+      border: 2px solid #ccc;
+      border-radius: 10px;
+      appearance: none;
+      height: 20px;
+      width: 20px;
+      background-color: #f0f0f0;
+      outline: none;
+      cursor: pointer;
+    }
+
+    /* Style the checked state of the checkbox */
+    input[type=checkbox]:checked + label {
+      background-color: #ffdb58;
+      border-color: #ffdb58;
+      color: #333;
+      text-shadow: 1px 1px #fff;
+      box-shadow: none;
+    }
+
+    /* Style the checkmark */
+    input[type=checkbox]:checked + label::before {
+      content: '\2713';
+      font-size: 18px;
+      line-height: 1;
+      color: #333;
+      margin-right: 5px;
+    }
+
+    /* Style the hover state of the label */
+    label:hover {
+      background-color: #e6e6e6;
+      border-color: #999;
+      cursor: pointer;
+    }
+
+    /* Style the focus state of the checkbox */
+    input[type=checkbox]:focus {
+      border-color: #999;
+      box-shadow: 0 0 3px #999;
+    }
+
+    /* Style the focus state of the label */
+    input[type=checkbox]:focus + label {
+      border-color: #999;
+      box-shadow: 0 0 3px #999;
+    }
+  </style>
+</head>
+<body>
+
+
+<h2>Select your favorite fruits:</h2>
+
+<div id="checkboxes"></div>
+
+<script>
+// Define an array of fruit options
+const fruits = ['Apple', 'Banana', 'Orange', 'Mango', 'Grape'];
+
+// Get the container div for the checkboxes
+const checkboxes = document.getElementById('checkboxes');
+
+// Loop through the fruit array and create a checkbox for each item
+for (let i = 0; i < fruits.length; i++) {
+    for (key,value in domains.items) {
+    for (val in value) {
+  const checkbox = document.createElement('input');
+  checkbox.type = 'checkbox';
+  checkbox.id = `checkbox${i}`;
+  checkbox.name = 'fruit';
+  checkbox.value = val;
+  const label = document.createElement('label');
+  label.htmlFor = `checkbox${i}`;
+  label.appendChild(document.createTextNode(fruits[i]));
+  checkboxes.appendChild(checkbox);
+checkboxes.appendChild(label);
+
+}}}
+</script>
+</body>
+</html>
+
+
+<form method="post" >
+    {% csrf_token %}
+{% for key, values in domains.items %}
+<div class="boxes">
+    {% for val in values %}
+    <input type="checkbox" id={{key}} value={{val}} name="userskills[]">
+    <label for={{val}}>{{val}}</label>
+    {% endfor %}
+  
+</div>
+
+{% endfor %}

@@ -1,0 +1,173 @@
+{% load static %}
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <style>
+            h2 {
+                font-size: 36px;
+                line-height: 40px;
+                margin: 1em 0 .6em 0;
+                font-weight: normal;
+                color: white;
+                text-shadow: 0 -1px 0 rgba(0,0,0,0.4);
+                position: relative;
+                
+            }
+           
+            
+            button {
+            display: inline-block;
+            outline: none;
+            cursor: pointer;
+            font-size: 14px;
+            line-height: 1;
+            border-radius: 500px;
+            transition-property: background-color,border-color,color,box-shadow,filter;
+            transition-duration: .3s;
+            border: 1px solid transparent;
+            letter-spacing: 2px;
+            min-width: 160px;
+            text-transform: uppercase;
+            white-space: normal;
+            font-weight: 700;
+            text-align: center;
+            padding: 17px 48px;
+            color: #fff;
+            background-color: #2B86C5;
+            height: 48px;
+            :hover{
+                transform: scale(1.04);
+                background-color: #21e065;
+            }
+            }
+
+body,
+html {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    height: 380vh;
+    background: #2707CF;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #000000, #2707CF);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #000000, #38CEAC);
+    background: linear-gradient(, #000000, #01AFDA );
+    background-color: #FF3CAC;
+background-image: linear-gradient(135deg, #FF3CAC 0%, #784BA0 33%, #2B86C5 66%, #ffffff 100%);
+
+
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+
+.container {
+    max-width: 640px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 13px;
+}
+
+ul.ks-cboxtags {
+    list-style: none;
+    padding: 20px;
+}
+ul.ks-cboxtags li{
+  display: inline;
+}
+ul.ks-cboxtags li label{
+    display: inline-block;
+    background-color: rgba(255, 255, 255, .9);
+    border: 2px solid rgba(139, 139, 139, .3);
+    color: #adadad;
+    border-radius: 25px;
+    white-space: nowrap;
+    margin: 3px 0px;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    transition: all .2s;
+}
+
+ul.ks-cboxtags li label {
+    padding: 8px 12px;
+    cursor: pointer;
+}
+
+ul.ks-cboxtags li label::before {
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    font-size: 12px;
+    padding: 2px 6px 2px 2px;
+    content: "\f067";
+    transition: transform .3s ease-in-out;
+}
+
+ul.ks-cboxtags li input[type="checkbox"]:checked + label::before {
+    content: "\f00c";
+    transform: rotate(-360deg);
+    transition: transform .3s ease-in-out;
+}
+
+ul.ks-cboxtags li input[type="checkbox"]:checked + label {
+    border: 2px solid #1bdbf8;
+    background-color: #42444C;
+    color: #fff;
+    transition: all .2s;
+}
+
+ul.ks-cboxtags li input[type="checkbox"] {
+  display: absolute;
+}
+ul.ks-cboxtags li input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+}
+ul.ks-cboxtags li input[type="checkbox"]:focus + label {
+  border: 2px solid #e9a1ff;
+}
+
+
+        </style>
+    </head>
+    
+    <body>
+       
+            <div class="container">
+                <form method="post" >
+                    {% csrf_token %}
+        {% for key, values in domains.items %}
+        <h2> {{key}}</h2>
+            <ul class="ks-cboxtags" align='center'>{{val}}
+                {% for id,val in values.items %}
+                
+                <li><input type="checkbox" id={{id}} value={{id}} name="userskills[]" ><label for={{id}}>{{val}}</label></li>
+                {% endfor %}
+            </ul>
+            {% endfor %}
+           
+            <button type="submit" class="btn btn-success mt-3">Submit</button>
+        </form>
+        </div>
+
+  
+  
+        
+  
+
+    </body>
+
+</html>
